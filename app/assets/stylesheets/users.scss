@@ -3,17 +3,6 @@
 	padding: 0;
 }
 
-.buttons{
-	width: 80%;
-	padding: 10px 0;
-	margin: 20px auto;
-	display: flex;
-	justify-content:space-around;
-}
-
-.login-modal-wrapper{
-
-}
 
 .login-modal{
 	width: 80%;
@@ -22,7 +11,10 @@
 	padding-bottom: 30px;
 	border-radius: 6px;
 	background-color: #e6ecf0;
-	text-align: center;
+}
+
+.btn{
+	margin-top: 30px;
 }
 
 .input-title{

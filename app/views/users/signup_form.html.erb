@@ -1,15 +1,15 @@
 <div class="page-title">
-	<h1>ログイン</h1>
+	<h1>新規登録</h1>
 </div>
 <div class="login-modal-wrapper">
     <div class="login-modal">
-        <%= form_tag("/login") do %>
+        <%= form_tag("/signup") do %>
             <div class="input-block">
                 <p class="input-title">ユーザー名</p>
                 <input type="text" class ="input-text" name="name">
                 <p class="input-title">パスワード<span id="note">※8文字以上必須</span></p>
                 <input type="password" class ="input-text" name="password">
-                <button type="submit" id="sign-up" class="btn btn-primary btn-lg">ログイン</button>
+                <button type="submit" id="sign-up" class="btn btn-success btn-lg">新規登録</button>
             </div>
         <% end %>
         <div class="warning" id="empty-name">ユーザー名もしくはパスワードが違います</div>

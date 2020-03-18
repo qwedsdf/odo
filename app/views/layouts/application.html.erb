@@ -16,6 +16,23 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.12.1.min.js"></script>
+    <header>
+      <div class="menu">
+        <h2><%= link_to("odotter","/") %></h2>
+        <% if @current_user == nil %>
+          <p><%= link_to("新規登録","/signup") %></p>
+          <p><%= link_to("ログイン","/login") %></p>
+        <% else %>
+          <p><%= link_to("ログアウト","/logout",method: :post) %></p>
+          <p><%= "貴様の名は「#{@current_user.name}」" %></p>
+        <% end %>
+      </div>
+    </header>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
