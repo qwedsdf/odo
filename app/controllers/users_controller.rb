@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def signup
     @user = User.new(
       name: params[:name],
-      password: params[:password]
+      password: params[:password],
+      icon_image: "defult.jpg"
     )
 
     if @user && @user.save

@@ -1,0 +1,9 @@
+<div class="index-wrapper">
+    <div class="manji-list">
+        <ul>
+        <% @posts.each do |post| %>
+            <li><img class="icon-image" src="/images/defult.jpg"><%= post.content %></li>
+        <% end %>
+        </ul>
+    </div>
+</div>
