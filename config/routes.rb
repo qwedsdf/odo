@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   # 卍関連
   get '/posts/index' => 'posts#index'
   get '/posts/new' => 'posts#new'
-  post 'posts/create' => 'posts#create'
+  post '/posts' => 'posts#create'
+  post '/posts' => 'posts#update'
 
   # ユーザー関連
   get '/login' => 'users#login_form'
