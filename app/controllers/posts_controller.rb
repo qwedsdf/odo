@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
     def index
+        @type = 'question'
         @posts = Post.all
     end
 
@@ -8,13 +9,13 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post=Post.new(user_id: @current_user.id, content:  params[:post][:content])
+        @post=Post.new(user_id: @current_user.id, content: params[:post][:content], tag: params[:post][:tag])
         if @post.save
             flash[:notice]="せーの！卍まんじ卍"
-        else 
-            flash[:notice]="ツイートに失敗"
+            redirect_to("/posts/index")
+        else
+            render("/posts/new")
         end
-        redirect_to("/posts/index")
     end
 
     def update

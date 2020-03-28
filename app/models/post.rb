@@ -3,7 +3,8 @@ class Post < ApplicationRecord
 
     enum tag:{
         question: 0,
-        information:1,
-        gaiji:2,
+        information: 1,
+        gaiji: 2,
+        notType: -1,
     }
 end
