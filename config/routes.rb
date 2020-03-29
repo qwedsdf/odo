@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
   # 卍関連
-  get '/posts/index' => 'posts#index'
+  get '/posts/:type/index' => 'posts#index'
   get '/posts/new' => 'posts#new'
+  post 'posts/select' => 'posts#select'
   post '/posts' => 'posts#create'
   post '/posts' => 'posts#update'
 

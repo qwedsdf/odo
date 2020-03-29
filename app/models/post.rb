@@ -2,9 +2,9 @@ class Post < ApplicationRecord
     validates :content, {presence: true}
 
     enum tag:{
-        question: 0,
+        notType: 0,
         information: 1,
         gaiji: 2,
-        notType: -1,
+        question: 3,
     }
 end

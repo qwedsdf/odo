@@ -1,12 +1,12 @@
 <div class="index-wrapper">
     <div class="manji-list">
         <ul>
-        <%= form_with url: posts_index_url, id: 'refresh',method: :get do |f| %>
-            <%= f.select :tag, Post.tags.keys.to_a, {} ,id: 'type-select' %>
-        <%end%>
+        <%= form_with url: posts_select_url, id: 'refresh' do |f| %>
+            <%= f.select :tag, options_for_select(Post.tags.keys,@type), {} ,id: 'type-select' %>
+        <% end %>
 
         <% @posts.each do |post| %>
-            <% if post.tag == @type %>
+            <% if post.tag == @type || @type == Post.tags.keys[0] %>
             <li><img class="icon-image" src="/images/defult.jpg"><%= post.content %></li>
             <% end %>
         <% end %>

@@ -24,7 +24,7 @@
           <p><%= link_to("ログイン","/login") %></p>
         <% else %>
           <p><%= link_to("ログアウト","/logout",method: :post) %></p>
-          <p><%= link_to("卍一覧","/posts/index") %></p>
+          <p><%= link_to("卍一覧","/posts/question/index") %></p>
           <p><%= link_to("卍する","/posts/new") %></p>
           <p><%= "貴様の名は暗黒漆黒破壊神ダークデストロイゴッド＠#{@current_user.name}" %></p>
         <% end %>
