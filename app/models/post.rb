@@ -7,4 +7,8 @@ class Post < ApplicationRecord
         gaiji: 2,
         question: 3,
     }
+
+    def user
+        return User.find_by(id: self.user_id)
+    end
 end
