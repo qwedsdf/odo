@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     end
     redirect_to("/")
   end
-    def show
+  def show
     @user = User.find_by(id: params[:id])
   end
 
