@@ -17,9 +17,6 @@ class PostsController < ApplicationController
             render("/posts/new")
         end
     end
-    def edit
-        @post = Post.find_by(id: params[:id])
-    end
     def select
         @type = params[:tag]
         redirect_to("/posts/#{@type}/index")
