@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post 'posts/select' => 'posts#select'
   post '/posts' => 'posts#create'
   post '/posts' => 'posts#update'
-
+  get "users/:id" => "users#show"
   #いいね
   post '/likes/:post_id/:type/create' => 'likes#create'
   post '/likes/:post_id/:type/destroy' => 'likes#destroy'

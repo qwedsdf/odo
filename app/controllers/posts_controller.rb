@@ -17,7 +17,6 @@ class PostsController < ApplicationController
             render("/posts/new")
         end
     end
-
     def select
         @type = params[:tag]
         redirect_to("/posts/#{@type}/index")
@@ -25,4 +24,8 @@ class PostsController < ApplicationController
 
     def update
     end
+    def show
+        @user = User.find_by(id: params[:id])
+     end
+  end
 end

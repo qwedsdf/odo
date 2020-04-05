@@ -1,0 +1,5 @@
+<% @user.posts.each do |post| %>
+	<img class="icon-image" src="<%= "/images/#{post.user.icon_image}" %>">
+	<%= link_to(post.user.name, "/users/#{post.user.id}") %>
+	<%= link_to(post.content, "/posts/#{post.id}") %>
+<% end %>
