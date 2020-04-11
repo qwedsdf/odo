@@ -6,10 +6,14 @@ class PostsController < ApplicationController
 
     def new
         @post = Post.new
+        flash[:reply_id] = params[:reply_id]
     end
 
     def create
         @post=Post.new(user_id: @current_user.id, content: params[:post][:content], tag: params[:post][:tag])
+        if flash[:reply_id]
+            @post.reply_id = flash[:reply_id]
+        end
         if @post.save
             flash[:notice]="せーの！卍まんじ卍"
             redirect_to("/posts/question/index")
@@ -24,7 +28,10 @@ class PostsController < ApplicationController
 
     def update
     end
+
     def show
-        @user = User.find_by(id: params[:id])
+        @post = Post.find_by(id: params[:id])
+        @reply_posts = Post.where(reply_id: @post.user.id)
+        @type = 'edit'
     end
 end
