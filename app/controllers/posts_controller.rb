@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
     def show
         @post = Post.find_by(id: params[:id])
-        @reply_posts = Post.where(reply_id: @post.user.id)
+        @reply_posts = Post.where(reply_id: @post.id)
         @type = 'edit'
     end
 end
