@@ -3,8 +3,14 @@
         <div class="field">
             <%= f.text_area :content, size: "30x10" %>
             <%= f.select :tag, Post.tags.keys.to_a, {} %>
-            <label>画像</label>
+            <label>画像1</label>
             <%= f.file_field :input_image_name_1 %>
+            <label>画像2</label>
+            <%= f.file_field :input_image_name_2 %>
+            <label>画像3</label>
+            <%= f.file_field :input_image_name_3 %>
+            <label>画像4</label>
+            <%= f.file_field :input_image_name_4 %>
             <%= f.submit "ツイートする",  class: "btn btn-primary btn-lg"%>
         </div>
     <% end %>
