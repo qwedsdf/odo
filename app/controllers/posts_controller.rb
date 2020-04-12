@@ -9,13 +9,19 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post=Post.new(user_id: @current_user.id, content: params[:post][:content], tag: params[:post][:tag])
+        @post=Post.new(user_id: @current_user.id, content: params[:post][:content], tag: params[:post][:tag],image_1:"#{SecureRandom.uuid}.jpg")
+        if params[:input_image_1]
+            image = params[:input_image_name_1]
+            File.binwrite("public/images/tweet_image/#{@post.image_1}", image.read)           
+        end
         if @post.save
             flash[:notice]="せーの！卍まんじ卍"
             redirect_to("/posts/question/index")
         else
             render("/posts/new")
         end
+
+
     end
     def select
         @type = params[:tag]
