@@ -2,7 +2,9 @@ class PostsController < ApplicationController
     def index
         @type = params[:type]
         @posts = Post.all
-        @search_word=params[:post][:search_word]
+        if params[:search_word]
+            @search_word=params[:search_word]
+        end
     end
 
     def new

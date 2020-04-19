@@ -28,10 +28,10 @@
           <p><%= link_to("卍一覧","/posts/notType/index") %></p>
           <p><%= link_to("卍する","/posts/new") %></p>
           <p>貴様の名は暗黒漆黒破壊神ダークデストロイゴッド@<%=link_to(@current_user.name,"/users/edit") %></p>
-          <%= form_for ("/posts/:type/index") do |f| %>
-            <%= f.text_field :search_word %>
-            <%= f.submit"検索" %>
-          <%end%>
+            <%= form_with(url:"/posts/notType/index",method: :get,local: true) do |f| %>
+                <%= f.text_field :search_word %>
+                <%= f.submit "検索" %>
+            <%end%>
         <% end %>
       </div>
     </header>
