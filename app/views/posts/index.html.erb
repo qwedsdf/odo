@@ -6,7 +6,7 @@
         <% end %>
 
         <% @posts.each do |post| %>
-            <% if post.tag == @type || @type == Post.tags.keys[0] %>
+            <% if (post.tag == @type || @type == Post.tags.keys[0])&&(post.content.include?("#{@search_word}"))%>
                 <li>
                     <img class="icon-image" src="<%= "/images/#{post.user.icon_image}" %>"><%= post.content %>
                     <img class="icon-image" src="<%= "/images/tweet_images/#{post.image_1}" %>">

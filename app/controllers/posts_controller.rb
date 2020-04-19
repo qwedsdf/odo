@@ -2,6 +2,7 @@ class PostsController < ApplicationController
     def index
         @type = params[:type]
         @posts = Post.all
+        @search_word=params[:post][:search_word]
     end
 
     def new

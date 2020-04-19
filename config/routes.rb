@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   # 卍関連
   get '/posts/:type/index' => 'posts#index'
+  post '/posts/:type/index' => 'posts#index'
   get '/posts/new' => 'posts#new'
   post 'posts/select' => 'posts#select'
   post '/posts' => 'posts#create'
