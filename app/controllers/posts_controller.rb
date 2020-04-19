@@ -9,10 +9,12 @@ class PostsController < ApplicationController
 
     def new
         @post = Post.new
+        flash[:reply_id] = params[:reply_id]
     end
 
     def create
         @post=Post.new(user_id: @current_user.id, content: params[:post][:content], tag: params[:post][:tag])
+
         if params[:post][:input_image_name_1]
             image = params[:post][:input_image_name_1]
             @post.image_1="#{SecureRandom.uuid}.jpg"
@@ -33,6 +35,10 @@ class PostsController < ApplicationController
             @post.image_4="#{SecureRandom.uuid}.jpg"
             File.binwrite("public/images/tweet_images/#{@post.image_4}", image.read)           
         end
+        if flash[:reply_id]
+            @post.reply_id = flash[:reply_id]
+
+        end
         if @post.save
             flash[:notice]="せーの！卍まんじ卍"
             redirect_to("/posts/question/index")
@@ -49,7 +55,10 @@ class PostsController < ApplicationController
 
     def update
     end
+
     def show
-        @user = User.find_by(id: params[:id])
+        @post = Post.find_by(id: params[:id])
+        @reply_posts = Post.where(reply_id: @post.id)
+        @type = 'edit'
     end
 end

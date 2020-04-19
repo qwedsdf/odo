@@ -6,6 +6,7 @@ class Post < ApplicationRecord
         information: 1,
         gaiji: 2,
         question: 3,
+        edit: 4,
     }
 
     def user
