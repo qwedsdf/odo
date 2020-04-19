@@ -8,7 +8,7 @@
         <% @posts.each do |post| %>
             <% if post.tag == @type || @type == Post.tags.keys[0] %>
                 <li>
-                    <img class="icon-image" src="<%= "/images/#{post.user.icon_image}" %>"><%= post.content %>
+                    <img class="icon-image" src="<%= "/images/#{post.user.icon_image}" %>"><%= link_to(post.content,"/posts/#{post.id}/show") %>
                     <%= link_to(post.user.name, "/users/#{post.user.id}/show") %>
                     <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
                         <%= link_to("/likes/#{post.id}/#{@type}/destroy",{method: "post"}) do %>
