@@ -27,6 +27,7 @@
           <p><%= link_to("ログアウト","/logout",method: :post) %></p>
           <p><%= link_to("卍一覧","/posts/notType/index") %></p>
           <p><%= link_to("卍する","/posts/0/new") %></p>
+          <%= link_to("/notice/looked",method: :post) do %><i class="far fa-bell notice-icon"><%= @new_notice.size %></i><% end %>
           <p>貴様の名は暗黒漆黒破壊神ダークデストロイゴッド@<%=link_to(@current_user.name,"/users/edit") %></p>
         <% end %>
       </div>
@@ -36,6 +37,27 @@
         <%= flash[:notice] %>
       </div>
     <% end %>
+    <div class="notificationPanel">
+      <ul>
+        <% @notifications.each do |notice| %>
+          <li><%= notice.user.name %>さんがあなたのツイートいいねしました。<br><%= notice.post.content %></li>
+        <% end %>
+      <ul>
+    </div>
     <%= yield %>
   </body>
 </html>
+
+<script type="text/javascript">
+$(".notificationPanel").hide();
+  var isShow = false;
+  $(".notice-icon").click(function () {
+    if (isShow){
+      $(".notificationPanel").hide();
+      isShow = false;
+    } else {
+      $(".notificationPanel").show();
+      isShow = true;
+    }
+  });
+</script>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_31_132736) do
+ActiveRecord::Schema.define(version: 2020_04_18_072647) do
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
@@ -19,12 +19,26 @@ ActiveRecord::Schema.define(version: 2020_03_31_132736) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "post_user_id"
+    t.integer "post_id"
+    t.boolean "is_looked"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "do_user_id"
+  end
+
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "tag"
+    t.integer "reply_id"
+    t.string "image_1"
+    t.string "image_2"
+    t.string "image_3"
+    t.string "image_4"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
