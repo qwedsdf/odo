@@ -29,6 +29,10 @@
           <p><%= link_to("卍する","/posts/0/new") %></p>
           <%= link_to("/notice/looked",method: :post) do %><i class="far fa-bell notice-icon"><%= @new_notice.size %></i><% end %>
           <p>貴様の名は暗黒漆黒破壊神ダークデストロイゴッド@<%=link_to(@current_user.name,"/users/edit") %></p>
+            <%= form_with(url:"/posts/notType/index",method: :get,local: true) do |f| %>
+                <%= f.text_field :search_word %>
+                <%= f.submit "検索" %>
+            <%end%>
         <% end %>
       </div>
     </header>

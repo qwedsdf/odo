@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
   # 卍関連
-  get '/posts/:type/index' => 'posts#index'
+
   get '/posts/:reply_id/new' => 'posts#new'
-  post 'posts/select' => 'posts#select'
+  post '/posts/select' => 'posts#select'
   post '/posts' => 'posts#create'
   post '/posts' => 'posts#update'
   get "/posts/:id/show" => "posts#show"
+  get '/posts/:type/index' => 'posts#index'
+  post '/posts/:type/index' => 'posts#index'
 
   #いいね
   post '/likes/:post_id/:type/create' => 'likes#create'
@@ -24,7 +26,6 @@ Rails.application.routes.draw do
 
   #通知
   post '/notice/looked' => 'notice#looked'
-
 
   get '/' => 'home#top'
 end
