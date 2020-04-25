@@ -61,4 +61,11 @@ class PostsController < ApplicationController
         @reply_posts = Post.where(reply_id: @post.id)
         @type = 'edit'
     end
+
+    def bestanswer
+        @ques_post = Post.find_by(id: params[:question_id])
+        @ans_post = Post.find_by(id: params[:ans_id])
+        @ques_post.best_answer_post_id = @ans_post.id;
+        @ques_post.save
+    end
 end
