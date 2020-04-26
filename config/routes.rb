@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   # 卍関連
-
   get '/posts/:reply_id/new' => 'posts#new'
   post '/posts/select' => 'posts#select'
   post '/posts' => 'posts#create'
@@ -9,6 +8,7 @@ Rails.application.routes.draw do
   get "/posts/:id/show" => "posts#show"
   get '/posts/:type/index' => 'posts#index'
   post '/posts/:type/index' => 'posts#index'
+  post '/posts/:question_id/:ans_id' => 'posts#bestanswer'
 
   #いいね
   post '/likes/:post_id/:type/create' => 'likes#create'
