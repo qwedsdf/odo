@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
     def index
         @type = params[:type]
+        @random = rand(2)
         @posts = Post.all
         if params[:search_word]
             @search_word=params[:search_word]

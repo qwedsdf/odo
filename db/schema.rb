@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_210149) do
     t.string "image_2"
     t.string "image_3"
     t.string "image_4"
+    t.integer "reply_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
