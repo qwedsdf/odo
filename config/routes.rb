@@ -24,5 +24,8 @@ Rails.application.routes.draw do
   post '/users/update' => 'users#update'
   get "/users/:id/show" => "users#show"
 
+  #通知
+  post '/notice/looked' => 'notice#looked'
+
   get '/' => 'home#top'
 end
