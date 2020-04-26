@@ -15,6 +15,7 @@
     <% end %>
 </div>
 
+<%# リプライ %>
 <% @reply_posts.each do |post| %>
     <img class="icon-image" src="<%= "/images/#{post.user.icon_image}" %>"><%= link_to(post.content,"/posts/#{post.id}/show") %>
     <div class="icon-wrapper">
@@ -29,6 +30,17 @@
         <% end %>
         <%= link_to("/posts/#{@post.user.id}/new") do %>
             <i class="far fa-comments"></i>
+        <% end %>
+        <% if @post.tag_before_type_cast == Post.tags[:question] %>
+            <% if @post.best_answer_post_id == 0 %>
+                <%= link_to("/posts/#{@post.id}/#{post.id}",{method: "post"}) do %>
+                    <i class="far fa-kiss-wink-heart"></i>
+                <% end %>
+            <% else %>
+                <% if @post.best_answer_post_id == post.id %>
+                    <i class="fas fa-kiss-wink-heart"></i>
+                <% end %>
+            <% end %>
         <% end %>
     </div>
 <% end %>
