@@ -18,21 +18,28 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.12.1.min.js"></script>
     <header>
-      <div class="menu">
-        <h2><%= link_to("odotter","/") %></h2>
+      <div class="header-outerFrame">
+        <%= form_with(url:"/posts/notType/index",method: :get,local: true) do |f| %>
+            <%= f.text_field :search_word %>
+            <%= f.submit "検索" %>
+        <%end%>
+        <p><%= link_to("odotter","/",class: "header-odotter-letter") %></p>
         <% if @current_user == nil %>
-          <p><%= link_to("新規登録","/signup") %></p>
-          <p><%= link_to("ログイン","/login") %></p>
+          <p class="header-ruledLine common-letterColor-white">|<p/>
+          <p><%= link_to("新規登録","/signup",class: "common-letterColor-white") %></p>
+          <p class="header-ruledLine common-letterColor-white">|<p/>
+          <p><%= link_to("ログイン","/login",class: "common-letterColor-white") %></p>
         <% else %>
-          <p><%= link_to("ログアウト","/logout",method: :post) %></p>
-          <p><%= link_to("卍一覧","/posts/notType/index") %></p>
-          <p><%= link_to("卍する","/posts/0/new") %></p>
-          <%= link_to("/notice/looked",method: :post) do %><i class="far fa-bell notice-icon"><%= @new_notice.size %></i><% end %>
-          <p>貴様の名は暗黒漆黒破壊神ダークデストロイゴッド@<%=link_to(@current_user.name,"/users/edit") %></p>
-            <%= form_with(url:"/posts/notType/index",method: :get,local: true) do |f| %>
-                <%= f.text_field :search_word %>
-                <%= f.submit "検索" %>
-            <%end%>
+          <p class="header-ruledLine common-letterColor-white">|<p/>
+          <p><%= link_to("卍一覧","/posts/notType/index",class: "common-letterColor-white") %></p>
+          <p class="header-ruledLine common-letterColor-white">|<p/>
+          <p><%= link_to("卍する","/posts/0/new",class: "common-letterColor-white") %></p>
+          <p class="header-ruledLine common-letterColor-white">|<p/>
+          <%= link_to("/notice/looked",method: :post,class: "common-letterColor-white") do %><i class="far fa-bell notice-icon"><%= @new_notice.size %></i><% end %>
+          <p class="header-ruledLine common-letterColor-white">|<p/>
+          <p class="common-letterColor-white">貴様の名は暗黒漆黒破壊神ダークデストロイゴッド@<%=link_to(@current_user.name,"/users/edit",class: "common-letterColor-white") %></p>
+          <p class="header-ruledLine common-letterColor-white">|<p/>
+          <p><%= link_to("ログアウト","/logout",method: :post,class: "common-letterColor-white") %></p>
         <% end %>
       </div>
     </header>
