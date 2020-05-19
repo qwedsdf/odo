@@ -16,10 +16,18 @@
             <% if (post.tag == @type || @type == Post.tags.keys[0])&&(post.content.include?("#{@search_word}"))%>
                 <li>
                     <img class="icon-image" src="<%= "/images/#{post.user.icon_image}" %>"><%= link_to(post.content,"/posts/#{post.id}/show") %>
-                    <img class="icon-image" src="<%= "/images/tweet_images/#{post.image_1}" %>">
-                    <img class="icon-image" src="<%= "/images/tweet_images/#{post.image_2}" %>">
-                    <img class="icon-image" src="<%= "/images/tweet_images/#{post.image_3}" %>">
-                    <img class="icon-image" src="<%= "/images/tweet_images/#{post.image_4}" %>">
+                    <% if (post.image_1 !=nil)%>
+                        <img class="icon-image" src="<%= "/images/tweet_images/#{post.image_1}" %>">
+                    <% end %>
+                    <% if (post.image_2 !=nil)%>
+                        <img cass="icon-image" src="<%= "/images/tweet_images/#{post.image_2}" %>">
+                    <% end %>
+                    <% if (post.image_3 !=nil)%>
+                        <img class="icon-image" src="<%= "/images/tweet_images/#{post.image_3}" %>">
+                    <% end %>
+                    <% if (post.image_4 !=nil)%>
+                        <img class="icon-image" src="<%= "/images/tweet_images/#{post.image_4}" %>">
+                    <% end %>
                     <%= link_to(post.user.name, "/users/#{post.user.id}/show") %>
                     <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
                         <%= link_to("/likes/#{post.id}/#{@type}/destroy",{method: "post"}) do %>
