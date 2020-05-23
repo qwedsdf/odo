@@ -1,6 +1,5 @@
 <div class="index-wrapper">
     <div class="manji-list">
-        <ul>
         <div class="advertisement-image">
             <%= form_with url: posts_select_url, id: 'refresh' do |f| %>
                 <%= f.select :tag, options_for_select(Post.tags.keys,@type), {} ,id: 'type-select' %>
@@ -12,36 +11,65 @@
                 <%= link_to image_tag("/images/noir.jpg"), "https://www.amazon.co.jp/%E3%83%A2%E3%83%B3%E3%83%87%E3%83%AA%E3%83%BC%E3%82%BA%E3%83%BB%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3-3490117-%E3%83%8A%E3%83%93%E3%82%B9%E3%82%B3-%E3%82%AA%E3%83%AC%E3%82%AA%E3%83%90%E3%83%8B%E3%83%A9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%A0-18%E6%9E%9A%C3%9710%E7%AE%B1/dp/B01KNI4DT2/ref=sr_1_1_sspa?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&dchild=1&keywords=%E3%82%AA%E3%83%AC%E3%82%AA&qid=1587843046&s=food-beverage&sr=1-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFQNlVLU1A5MlJJVzMmZW5jcnlwdGVkSWQ9QTEwMTA0MjhHRFM3UElROEg5N1UmZW5jcnlwdGVkQWRJZD1BMlZBOVgyNEpEVklRQSZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=" %>
             <% end %>
         </div>
-        <% @posts.each do |post| %>
-            <% if (post.tag == @type || @type == Post.tags.keys[0])&&(post.content.include?("#{@search_word}"))%>
-                <li class="post-content">
-                    <img class="icon-image" src="<%= "/images/#{post.user.icon_image}" %>"><%= link_to(post.content,"/posts/#{post.id}/show") %>
-                    <% if (post.image_1 !=nil)%>
-                        <img class="icon-image" src="<%= "/images/tweet_images/#{post.image_1}" %>">
-                    <% end %>
-                    <% if (post.image_2 !=nil)%>
-                        <img cass="icon-image" src="<%= "/images/tweet_images/#{post.image_2}" %>">
-                    <% end %>
-                    <% if (post.image_3 !=nil)%>
-                        <img class="icon-image" src="<%= "/images/tweet_images/#{post.image_3}" %>">
-                    <% end %>
-                    <% if (post.image_4 !=nil)%>
-                        <img class="icon-image" src="<%= "/images/tweet_images/#{post.image_4}" %>">
-                    <% end %>
-                    <%= link_to(post.user.name, "/users/#{post.user.id}/show") %>
+        <ul>
+            <% @posts.each do |post| %>
+                <% if (post.tag == @type || @type == Post.tags.keys[0])&&(post.content.include?("#{@search_word}"))%>
+                    <li class="post-content">
+                        <div class="content-header">
+                            <img class="icon-image" src="<%= "/images/#{post.user.icon_image}" %>">
+                            <div class="header-text">
+                                <%= link_to(post.user.name, "/users/#{post.user.id}/show") %>
+                                <p>2020年5月23日　12:50</p>
+                            </div>
+                        </div>
+                        
+                        <div class="post-contener">
+                            <div class = "post-content-body">
+                                <%= link_to(post.content,"/posts/#{post.id}/show") %>
+                                <div class="tweet-image-wrapper">
+                                    <% if (post.image_1 !=nil)%>
+                                        <img class="tweet-image" src="<%= "/images/tweet_images/#{post.image_1}" %>">
+                                    <% end %>
+                                    <% if (post.image_2 !=nil)%>
+                                        <img class="tweet-image" src="<%= "/images/tweet_images/#{post.image_2}" %>">
+                                    <% end %>
+                                    <% if (post.image_3 !=nil)%>
+                                        <img class="tweet-image" src="<%= "/images/tweet_images/#{post.image_3}" %>">
+                                    <% end %>
+                                    <% if (post.image_4 !=nil)%>
+                                        <img class="tweet-image" src="<%= "/images/tweet_images/#{post.image_4}" %>">
+                                    <% end %>
+                                </div>
+                            </div>
 
-                    <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
-                        <%= link_to("/likes/#{post.id}/#{@type}/destroy",{method: "post"}) do %>
-                            <span class="far fa-heart btn-like"></span>
-                        <% end %>
-                    <% else %>
-                        <%= link_to("/likes/#{post.id}/#{@type}/create",{method: "post"}) do %>
-                            <span class="far fa-heart btn-unlike"></span>
-                        <% end %>
-                    <% end %>
-                </li>
+                            <div class="post-like-info">
+                                <p>〇〇〇〇さん　他7人</p>
+                            </div>
+                        </div>
+
+                        <div class = "post-content-footer">
+                            <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
+                                <div class="footer-icon">
+                                    <%= link_to("/likes/#{post.id}/#{@type}/destroy",{method: "post"}) do %>
+                                        <span class="far fa-heart btn-like">いいね</span>
+                                    <% end %>
+                                </div>
+                            <% else %>
+                                <div class="footer-icon">
+                                    <%= link_to("/likes/#{post.id}/#{@type}/create",{method: "post"}) do %>
+                                        <span class="far fa-heart btn-unlike">いいね</span>
+                                    <% end %>
+                                </div>
+                            <% end %>
+                                <div class="footer-icon">
+                                    <%= link_to("/posts/#{post.user.id}/new") do %>
+                                        <i class="far fa-comments">コメント</i>
+                                    <% end %>
+                                </div>
+                        </div>
+                    </li>
+                <% end %>
             <% end %>
-        <% end %>
         </ul>
     </div>
 </div>
