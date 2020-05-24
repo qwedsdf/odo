@@ -25,7 +25,7 @@
                         
                         <div class="post-contener">
                             <div class = "post-content-body">
-                                <%= link_to(post.content,"/posts/#{post.id}/show") %>
+                                <p class="content-text"><%= link_to(post.content,"/posts/#{post.id}/show") %></p>
                                 <div class="tweet-image-wrapper">
                                     <% if (post.image_1 !=nil)%>
                                         <img class="tweet-image" src="<%= "/images/tweet_images/#{post.image_1}" %>">

@@ -70,6 +70,15 @@
     border-bottom: 1px solid black;
 }
 
+.content-text{
+    font-size: 27px;
+}
+
+.post-like-info p{
+    font-size: 26px;
+    color: #bcbcbc;
+}
+
 .footer-comments{
     margin-left: 38px;
     margin-right: 23px;
@@ -88,9 +97,12 @@
 }
 
 .user-name {
+    font-size: 28px;
     color: #3883c8;
 }
 
 .post-date{
+    font-size: 22px;
     color: #c7c7c7;
 }
+
