@@ -16,10 +16,10 @@
                 <% if (post.tag == @type || @type == Post.tags.keys[0])&&(post.content.include?("#{@search_word}"))%>
                     <li class="post-content">
                         <div class="content-header">
-                            <img class="icon-image" src="<%= "/images/#{post.user.icon_image}" %>">
+                            <%= link_to("/users/#{post.user.id}/show") do %><img class="icon-image" src="<%= "/images/#{post.user.icon_image}" %>"><% end %>
                             <div class="header-text">
-                                <%= link_to(post.user.name, "/users/#{post.user.id}/show") %>
-                                <p>2020年5月23日　12:50</p>
+                                <span class="user-name"><%= post.user.name %></span>
+                                <p class="post-date">2020年5月23日　12:50</p>
                             </div>
                         </div>
                         
@@ -43,7 +43,7 @@
                             </div>
 
                             <div class="post-like-info">
-                                <p>〇〇〇〇さん　他7人</p>
+                                <p><img class="btn-unlike" src="/images/ui/good2.png">〇〇〇〇さん　他7人</p>
                             </div>
                         </div>
 
@@ -51,21 +51,21 @@
                             <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
                                 <div class="footer-icon">
                                     <%= link_to("/likes/#{post.id}/#{@type}/destroy",{method: "post"}) do %>
-                                        <span class="far fa-heart btn-like">いいね</span>
+                                        <span><img class="btn-like" src="/images/ui/good1.png">いいね</span>
                                     <% end %>
                                 </div>
                             <% else %>
                                 <div class="footer-icon">
                                     <%= link_to("/likes/#{post.id}/#{@type}/create",{method: "post"}) do %>
-                                        <span class="far fa-heart btn-unlike">いいね</span>
+                                        <span><img class="btn-unlike" src="/images/ui/good1.png">いいね</span>
                                     <% end %>
                                 </div>
                             <% end %>
-                                <div class="footer-icon">
-                                    <%= link_to("/posts/#{post.user.id}/new") do %>
-                                        <i class="far fa-comments">コメント</i>
-                                    <% end %>
-                                </div>
+                            <div class="footer-icon footer-comments">
+                                <%= link_to("/posts/#{post.user.id}/new") do %>
+                                    <span><img class="btn-like" src="/images/ui/comment.png">コメント</span>
+                                <% end %>
+                            </div>
                         </div>
                     </li>
                 <% end %>

@@ -18,7 +18,7 @@
 .icon-image{
     width: 96px;
     height:96px;
-
+    border-radius: 50%;
     margin-right: 22px;
     margin-top: 7px;
 }
@@ -60,17 +60,19 @@
 }
 
 .post-content-footer{
-    height: 50px;
+    height: 73px;
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     background-color:whitesmoke;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
 
-.footer-icon{
-    margin-top: 10px;
+.footer-comments{
+    margin-left: 38px;
+    margin-right: 23px;
 }
 
 .btn-like{
@@ -83,4 +85,12 @@
 
 .advertisement-image{
     float:left;
+}
+
+.user-name {
+    color: #3883c8;
+}
+
+.post-date{
+    color: #c7c7c7;
 }
