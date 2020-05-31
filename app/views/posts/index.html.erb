@@ -1,3 +1,6 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
 <div class="index-wrapper">
     <div class="manji-list">
         <div class="advertisement-image">
@@ -15,43 +18,45 @@
             <% @posts.each do |post| %>
                 <% if (post.tag == @type || @type == Post.tags.keys[0])&&(post.content.include?("#{@search_word}"))%>
                     <li class="post-content">
-                        <div class="content-header">
-                            <%= link_to("/users/#{post.user.id}/show") do %><img class="icon-image" src="<%= "/images/#{post.user.icon_image}" %>"><% end %>
-                            <div class="header-text">
-                                <span class="user-name"><%= post.user.name %></span>
-                                <p class="post-date">2020年5月23日　12:50</p>
-                            </div>
-                        </div>
-                        
-                        <div class="post-contener">
-                            <div class = "post-content-body">
-                                <p class="content-text"><%= link_to(post.content,"/posts/#{post.id}/show") %></p>
-                                <div class="tweet-image-wrapper">
-                                    <% if (post.image_1 !=nil)%>
-                                        <img class="tweet-image" src="<%= "/images/tweet_images/#{post.image_1}" %>">
-                                    <% end %>
-                                    <% if (post.image_2 !=nil)%>
-                                        <img class="tweet-image" src="<%= "/images/tweet_images/#{post.image_2}" %>">
-                                    <% end %>
-                                    <% if (post.image_3 !=nil)%>
-                                        <img class="tweet-image" src="<%= "/images/tweet_images/#{post.image_3}" %>">
-                                    <% end %>
-                                    <% if (post.image_4 !=nil)%>
-                                        <img class="tweet-image" src="<%= "/images/tweet_images/#{post.image_4}" %>">
-                                    <% end %>
+                        <a href="<%= "/posts/#{post.id}/show" %>" class="link-post">
+                            <div class="content-header">
+                                <object><%= link_to("/users/#{post.user.id}/show") do %><img class="icon-image" src="<%= "/images/#{post.user.icon_image}" %>"><% end %></object>
+                                <div class="header-text">
+                                    <span class="user-name"><%= post.user.name %></span>
+                                    <p class="post-date">2020年5月23日　12:50</p>
                                 </div>
                             </div>
+                            
+                            <div class="post-contener">
+                                <div class = "post-content-body">
+                                    <p class="content-text"><%= post.content %></p>
+                                    <ul class="tweet-image-wrapper">
+                                        <% if (post.image_1 !=nil)%>
+                                            <li><a href="<%= "/images/tweet_images/#{post.image_1}" %>" data-lightbox="group"><img class="tweet-image" src="<%= "/images/tweet_images/#{post.image_1}" %>"></a></li>
+                                        <% end %>
+                                        <% if (post.image_2 !=nil)%>
+                                            <li><a href="<%= "/images/tweet_images/#{post.image_2}" %>" data-lightbox="group"><img class="tweet-image" src="<%= "/images/tweet_images/#{post.image_2}" %>"></a></li>
+                                        <% end %>
+                                        <% if (post.image_3 !=nil)%>
+                                            <li><a href="<%= "/images/tweet_images/#{post.image_3}" %>" data-lightbox="group"><img class="tweet-image" src="<%= "/images/tweet_images/#{post.image_3}" %>"></a></li>
+                                        <% end %>
+                                        <% if (post.image_4 !=nil)%>
+                                            <li><a href="<%= "/images/tweet_images/#{post.image_4}" %>" data-lightbox="group"><img class="tweet-image" src="<%= "/images/tweet_images/#{post.image_4}" %>"></a></li>
+                                        <% end %>
+                                    </ul>
+                                </div>
 
-                            <div class="post-like-info">
-                                <p><img class="btn-unlike" src="/images/ui/good2.png">〇〇〇〇さん　他7人</p>
+                                <div class="post-like-info">
+                                    <p><img class="btn-unlike" src="/images/ui/good2.png">〇〇〇〇さん　他7人</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
 
                         <div class = "post-content-footer">
                             <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
                                 <div class="footer-icon">
                                     <%= link_to("/likes/#{post.id}/#{@type}/destroy",{method: "post"}) do %>
-                                        <span><img class="btn-like" src="/images/ui/good1.png">いいね</span>
+                                        <span><img class="btn-like" src="/images/ui/good3.png">いいね</span>
                                     <% end %>
                                 </div>
                             <% else %>
