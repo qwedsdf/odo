@@ -13,8 +13,8 @@
  *= require_tree .
  *= require_self
  */
- /*�������[���i�b��j���̕��i?_�ǂ�ȋ@�\?_���H*/
- /*-----�w�b�_�[�̃f�U�C���n-----*/
+ /*命名ルール（暫定）何の部品?_どんな機能?_何？*/
+ /*-----ヘッダーのデザイン系-----*/
 header div p{
     margin-bottom:0px;
 }
@@ -23,7 +23,7 @@ header div p{
     src:font-url("RiiPopkkR.otf")format('truetype');
 }
 
- .header-outerFrame{/*��ԊO�g*/
+ .header-outerFrame{/*一番外枠*/
     font-family:"main_font";
     background-color:#444444;
     display: flex;
@@ -31,20 +31,20 @@ header div p{
     justify-content: center
     padding:0px 232px 0px 232px;
 }
-.header-ruledLine{/*�w�b�_�[�̌r�� �� | ���*/
+.header-ruledLine{/*ヘッダーの罫線 例 | やつ*/
     margin:0px 13px 0px 13px;
 }
-.header-search-letter{/*��������*/
+.header-search-letter{/*検索文字*/
 
 }
 
-.header-odotter-letter{/*odotter�̕���*/
+.header-odotter-letter{/*odotterの文字*/
     font-size:30px;
     color:#3B87AF;
     margin:0px 270px 0px 265px;
 }
-/*���ʓI�Ɏg����CSS*/
-.common-letterColor-white{/*�������F*/
+/*共通的に使えるCSS*/
+.common-letterColor-white{/*文字白色*/
     color:#FFFFFF;
 }
 
