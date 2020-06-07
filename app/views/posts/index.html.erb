@@ -47,7 +47,9 @@
                                 </div>
 
                                 <div class="post-like-info">
-                                    <p><img class="btn-unlike" src="/images/ui/good2.png">〇〇〇〇さん　他7人</p>
+                                    <% if (post.like_count > 0)%>
+                                        <p><img class="btn-unlike" src="/images/ui/good2.png"><%= post.like_member_random %>さん<% if (post.like_count > 1)%>　他<%= post.like_count - 1 %>人<% end %></p>
+                                    <% end %>
                                 </div>
                             </div>
                         </a>
