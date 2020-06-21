@@ -4,7 +4,6 @@
     <title>Odo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta http-equiv="content-type" charset="utf-8">
@@ -13,34 +12,52 @@
   </head>
 
   <body>
+    <script src="//code.jquery.com/jquery-1.12.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="//code.jquery.com/jquery-1.12.1.min.js"></script>
     <header>
       <div class="header-outerFrame">
-        <%= form_with(url:"/posts/notType/index",method: :get,local: true) do |f| %>
-            <%= f.text_field :search_word %>
-            <%= f.submit "検索" %>
-        <%end%>
-        <p><%= link_to("odotter","/",class: "header-odotter-letter") %></p>
-        <% if @current_user == nil %>
-          <p class="header-ruledLine common-letterColor-white">|<p/>
-          <p><%= link_to("新規登録","/signup",class: "common-letterColor-white") %></p>
-          <p class="header-ruledLine common-letterColor-white">|<p/>
-          <p><%= link_to("ログイン","/login",class: "common-letterColor-white") %></p>
-        <% else %>
-          <p class="header-ruledLine common-letterColor-white">|<p/>
-          <p><%= link_to("卍一覧","/posts/notType/index",class: "common-letterColor-white") %></p>
-          <p class="header-ruledLine common-letterColor-white">|<p/>
-          <p><%= link_to("卍する","/posts/0/new",class: "common-letterColor-white") %></p>
-          <p class="header-ruledLine common-letterColor-white">|<p/>
-          <%= link_to("/notice/looked",method: :post,class: "common-letterColor-white") do %><i class="far fa-bell notice-icon"><%= @new_notice.size %></i><% end %>
-          <p class="header-ruledLine common-letterColor-white">|<p/>
-          <p class="common-letterColor-white">貴様の名は暗黒漆黒破壊神ダークデストロイゴッド@<%=link_to(@current_user.name,"/users/edit",class: "common-letterColor-white") %></p>
-          <p class="header-ruledLine common-letterColor-white">|<p/>
-          <p><%= link_to("ログアウト","/logout",method: :post,class: "common-letterColor-white") %></p>
-        <% end %>
+        <div class="header-outerFrame-item1"><!- 外枠の子1 -->
+            <%= form_with(url:"/posts/notType/index",method: :get,local: true) do |f| %>
+                <%= f.text_field :search_word %>
+                <%= f.submit "検索" %>
+            <%end%>
+        </div>
+        <div class="header-outerFrame-item3"><!- 外枠の子2 -->
+            <p><%= link_to("odotter","/",class: "header-odotter-letter") %></p>
+        </div>
+            <div class="header-outerFrame-item3"><!- 外枠の子3 -->
+            <% if @current_user == nil %>
+              <p class="header-ruledLine common-letterColor-white">|<p/>
+              <p><%= link_to("新規登録","/signup",class: "common-letterColor-white") %></p>
+              <p class="header-ruledLine common-letterColor-white">|<p/>
+              <p><%= link_to("ログイン","/login",class: "common-letterColor-white") %></p>
+            <% else %>
+              <p class="header-ruledLine common-letterColor-white">|<p/>
+              <p><%= link_to("卍一覧","/posts/notType/index",class: "common-letterColor-white") %></p>
+              <p class="header-ruledLine common-letterColor-white">|<p/>
+              <p><%= link_to("卍する","/posts/0/new",class: "common-letterColor-white") %></p>
+              <p class="header-ruledLine common-letterColor-white">|<p/>
+              <%= link_to("/notice/looked",method: :post,class: "common-letterColor-white") do %><i class="far fa-bell notice-icon"><%= @new_notice.size %></i><% end %>
+              <p class="header-ruledLine common-letterColor-white">|<p/>
+                <div class="dialog" id="sample-dialog">
+                  <div class="dialog-header">
+                    <span class="dialog-title">サンプルダイアログ</span>
+                    <button type="button" class="dialog-close">
+                      閉じる☓
+                    </button>
+                  </div>
+                  <div class="dialog-content">
+                    <p>ダイアログです</p>
+                  </div>
+                </div>
+                <button id="open-sample-dialog">
+                    <img class="icon-image" src="<%= "/images/#{@current_user.icon_image}" %>">
+                </button>
+              <!--<p><%= link_to("ログアウト","/logout",method: :post,class: "common-letterColor-white") %></p>-->
+            <% end %>
+        </div>
       </div>
     </header>
     <% if flash[:notice] %>
@@ -72,3 +89,14 @@ $(".notificationPanel").hide();
     }
   });
 </script>
+<script type="text/javascript">
+    $("#open-sample-dialog").on("click", function(){
+        var leftPosition = (($(window).width() - $("#sample-dialog").outerWidth(true)) / 2);
+        $("#sample-dialog").css({"left": leftPosition + "px"});
+        $("#sample-dialog").show();
+    });
+    $(".dialog-close").on("click", function(){
+        $(this).parents(".dialog").hide();
+    });
+</script>
+<script type="text/javascript" src="application.js" ></script>

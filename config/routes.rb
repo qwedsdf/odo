@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   post '/notice/looked' => 'notice#looked'
 
   get '/' => 'home#top'
+  get '/' => 'application#set_current_user'
 end

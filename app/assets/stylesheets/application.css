@@ -20,33 +20,83 @@ header div p{
 }
 @font-face{
     font-family:"main_font";
-    src:font-url("RiiPopkkR.otf")format('truetype');
+    src:font-url('RiiPopkkR.otf')format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
-
- .header-outerFrame{/*一番外枠*/
+*{/*画面全体*/
     font-family:"main_font";
+}
+ .header-outerFrame{/*一番外枠*/
     background-color:#444444;
     display: flex;
     align-items: center;
-    justify-content: center
-    padding:0px 232px 0px 232px;
+    justify-content: space-around;
 }
+.header-outerFrame-item1{/*外枠の子1*/
+
+}
+.header-outerFrame-item2{/*外枠の子2*/
+
+}
+.header-outerFrame-item3{/*外枠の子3*/
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
 .header-ruledLine{/*ヘッダーの罫線 例 | やつ*/
     margin:0px 13px 0px 13px;
 }
-.header-search-letter{/*検索文字*/
 
-}
+
 
 .header-odotter-letter{/*odotterの文字*/
-    font-size:30px;
-    color:#3B87AF;
-    margin:0px 270px 0px 265px;
+    font-size:35px;
 }
+
 /*共通的に使えるCSS*/
 .common-letterColor-white{/*文字白色*/
     color:#FFFFFF;
 }
+/*アンコン押下時のダイアログ*/
 
+.dialog {
+  overflow: hidden;
+  position: absolute;
+  top: 30%;
+  height: auto;
+  width: 300px;
+  display: none;
+  border:1px solid #aaa;
+  z-index:1000;
+}
+.dialog-header {
+  border: 1px solid #aaa;
+  background: #cccccc;
+  color: #222222;
+  font-weight: bold;
+  overflow: hidden;
+  padding:5px;
+}
+.dialog-title {
+  float: left;
+}
+.dialog-close {
+  float: right;
+  border: 1px solid #d3d3d3;
+  background: #e6e6e6;
+  font-weight: normal;
+  color: #555555;
+}
+.dialog-content {
+  position: relative;
+  border: 0;
+  padding: .5em 1em;
+  background: #fff;
+  overflow: auto;
+  width: auto;
+  height: auto;
+}
 
 /*-------------------------------*/

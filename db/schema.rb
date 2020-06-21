@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_25_083945) do
+ActiveRecord::Schema.define(version: 2020_04_26_140711) do
 
   create_table "bestanswers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_04_25_083945) do
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_user_id"
     t.integer "post_id"
-    t.boolean "is_looked"
+    t.boolean "is_looked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "do_user_id"
@@ -39,11 +39,11 @@ ActiveRecord::Schema.define(version: 2020_04_25_083945) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "tag"
-    t.integer "reply_id"
     t.string "image_1"
     t.string "image_2"
     t.string "image_3"
     t.string "image_4"
+    t.integer "reply_id"
     t.integer "best_answer_post_id", default: 0
   end
 
