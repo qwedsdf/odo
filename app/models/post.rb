@@ -12,4 +12,15 @@ class Post < ApplicationRecord
     def user
         return User.find_by(id: self.user_id)
     end
+
+    def like_count
+        return Like.where(post_id: self.id).count
+    end
+
+    def like_member_random
+        @list = Like.where(post_id: self.id)
+        @count = @list.count
+        @user_id = @list.last.user_id
+        return User.find_by(id: @user_id).name
+    end
 end

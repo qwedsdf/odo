@@ -4,21 +4,97 @@
     ul{
         list-style: none;
     }
+}
 
-    li{
-        background-color: yellowgreen;
-        width: 800px;
-        padding: 20px 0;
-        margin: auto;
-        text-align: center;
-        margin-bottom: 10px;
-        font-size: large;
-    }
+.post-content{
+    background-color: white;
+    width: 865px;
+    border: 1px solid black;
+    margin: auto;
+    margin-bottom: 10px;
+    font-size: large;
 }
 
 .icon-image{
-    width: 50px;
-    height:50px;
+    width: 96px;
+    height:96px;
+    border-radius: 50%;
+    margin-right: 22px;
+    margin-top: 7px;
+}
+
+.link-post{
+    color: #4c4c4c;
+}
+
+.link-post:hover {
+    text-decoration: none;
+    color: #4c4c4c;
+}
+
+.content-header{
+    width: 100%;
+    height: 100px;
+    margin-left: 19px;
+    display: flex;
+}
+
+.header-text {
+    margin-top: 22px;
+}
+
+.post-contener{
+    margin-left: 139px;
+    width: 670px;
+}
+
+.post-content-body{
+    
+}
+
+.tweet-image-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tweet-image-wrapper li{
+    width: calc(100%/2);
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
+.tweet-image-wrapper a{
+    width: 100%;
+}
+
+.tweet-image {
+    width: 100%;
+    height: 300px;
+}
+
+.post-content-footer{
+    height: 73px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color:whitesmoke;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.content-text{
+    font-size: 27px;
+}
+
+.post-like-info p{
+    font-size: 26px;
+    color: #bcbcbc;
+}
+
+.footer-comments{
+    margin-left: 38px;
+    margin-right: 23px;
 }
 
 .btn-like{
@@ -26,8 +102,20 @@
 }
 
 .btn-unlike{
-    color: gray;
+    color: green;
 }
+
 .advertisement-image{
     float:left;
 }
+
+.user-name {
+    font-size: 28px;
+    color: #3883c8;
+}
+
+.post-date{
+    font-size: 22px;
+    color: #c7c7c7;
+}
+
