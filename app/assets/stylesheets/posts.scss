@@ -6,6 +6,10 @@
     }
 }
 
+li {
+    list-style: none;
+}
+
 .post-content{
     background-color: white;
     width: 865px;
@@ -61,6 +65,7 @@
     width: calc(100%/2);
     padding: 0 5px;
     box-sizing: border-box;
+    list-style: none;
 }
 
 .tweet-image-wrapper a{
