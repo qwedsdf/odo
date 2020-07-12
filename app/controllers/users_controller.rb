@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    @user = User.find_by(id: @current_user.id)
   end
 
   def update
@@ -61,6 +61,7 @@ class UsersController < ApplicationController
     end
     redirect_to("/")
   end
+
   def show
     @user = User.find_by(id: params[:id])
   end
