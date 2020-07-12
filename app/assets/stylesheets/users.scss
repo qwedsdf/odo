@@ -168,7 +168,14 @@
 
 .edit-header-wrapper{
 	text-align: center;
+	position: relative;
+	.camera-icon{
+		position: absolute;
+		right: 50%;
+		top: 50%;
+	}
 }
+
 
 .edit-profile-dialog{
 	background-color: pink;
@@ -190,6 +197,12 @@
 		position: absolute;
 		left: 30px;
 		top: 279px;
+	}
+
+	.icon-camera-icon{
+		position: absolute;
+		left: 55px;
+		top: 310px;
 	}
 
 	.edit-header-title{

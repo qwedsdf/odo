@@ -97,8 +97,12 @@
 	<div class="edit-profile-dialog-wrapper">
 		<div class="edit-profile-dialog">
 			<p class = "edit-header-title">プロフィール編集</p>
-			<div class = "edit-header-wrapper"><img class = "header-image" src="<%= "/images/back_image/#{@user.header_image}" %>"></div>
+			<div class = "edit-header-wrapper">
+				<img class = "header-image" src="<%= "/images/back_image/#{@user.header_image}" %>">
+				<img class = "camera-icon" src = "/images/ui/change_image_icon.png">
+			</div>
 			<img class = "icon-image" src="<%= "/images/#{@user.icon_image}" %>">
+			<img class = "icon-camera-icon" src = "/images/ui/change_image_icon.png">
 			<div class = "edit-text-profile">
 			<%= form_for @user,:url => {controller: "users", action: "edit"} do |f| %>
 				<div class = "edit-text">
